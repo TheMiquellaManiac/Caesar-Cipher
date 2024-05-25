@@ -1,0 +1,25 @@
+def GetAlphaPos(letter):
+    for count in range(0,26):
+        if Alphalist[count] == letter:
+            return count
+
+Alphalist = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+CodedMessage = ''
+CodedCharacter = ''
+Message = input("what is you Message:  ")
+Shift = []
+Shift.append(int(input("First Shift number: ")))
+Shift.append(int(input("Second Shift number: ")))
+Shift.append(int(input("Third Shift number: ")))
+count = 0
+for x in range(0, len(Message)):
+    letter = Message[x]
+    if letter in Alphalist:
+        CodedCharacter = Alphalist[(GetAlphaPos(letter) + Shift[count % 3]) % 26 ]
+        CodedMessage += CodedCharacter
+        count += 1
+    else:
+        CodedCharacter = letter
+        CodedMessage += CodedCharacter
+print(CodedMessage)
+
